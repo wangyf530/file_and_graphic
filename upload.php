@@ -15,11 +15,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>檔案上傳</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        form{
+            width: 300px;
+            margin:20px auto;
+            padding:20px;
+            border:1px solid #ccc;
+        }
+    </style>
 </head>
 <body>
  <h1 class="header">檔案上傳練習</h1>
  <!----建立你的表單及設定編碼----->
+ <!-- file 的話一定要有 enctype -->
+<form action="manage.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="img" id="file">
+    <input type="text" name="name" id="name">
+    <input type="submit" value="上傳">
 
+</form>
 
 
 
