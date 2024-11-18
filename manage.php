@@ -63,9 +63,11 @@ $items = array_diff($items, array('.','..'));
 // dd($items);
 
 // print every pic file in dirpath
+// 1 pic every row
 foreach ($items as $file) {
     echo "<div class='item'>";
     echo "<img src='{$dirpath}/{$file}'>";
+    echo "<a href='del_img.php?file={$file}'>刪除</a>";
     echo "</div>";
 }
 

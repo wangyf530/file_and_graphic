@@ -5,4 +5,8 @@ function dd($array){
     echo "</pre>";
 }
 
+function del(){
+    
+}
+
 ?>
