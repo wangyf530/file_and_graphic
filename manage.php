@@ -16,26 +16,64 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>檔案管理功能</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .item{
+            width: 200px;
+        }
+        .item img{
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
 <h1 class="header">檔案管理練習</h1>
 <!----建立上傳檔案表單及相關的檔案資訊存入資料表機制----->
 <?php
 include_once "function.php";
-echo $_POST['name'];
-echo "<br>";
-dd($_FILES);
+// no need 
+// echo $_POST['name'];
+// echo "<br>";
+// dd($_FILES);
 
-if($_FILES['img']['error']==0){
-    move_uploaded_file($_FILES['img']['tmp_name'],"./files/".$_FILES['img']['name']);
+if(isset($_FILES['img'])){
+    if($_FILES['img']['error']==0){
+        move_uploaded_file($_FILES['img']['tmp_name'],"./files/".$_FILES['img']['name']);
+    } else {
+        // 前面會需要更多判定去檢查
+        echo "上傳失敗，請檢查檔案格式或是大小是否符合規定。";
+    }
 }
 ?>
 
+<!----透過檔案讀取來顯示檔案的資訊，並可對檔案執行更新或刪除的工作----->
+<?php
+// open the folder first - menu path
+$dirpath = "./files";
+
+// open directory handle - 檔案要處理的狀態
+// 返回resourse - 資源: 包含 檔案
+// $dir = opendir($dirpath);
+
+// 因為沒有要更改所以用scan就好
+$items = scandir($dirpath);
+// 如果要判斷要再加程式碼
+$items = array_diff($items, array('.','..'));
+
+// print every file in $dirpath
+// dd($items);
+
+// print every pic file in dirpath
+foreach ($items as $file) {
+    echo "<div class='item'>";
+    echo "<img src='{$dirpath}/{$file}'>";
+    echo "</div>";
+}
 
 
+
+?>
 
 <!----透過資料表來顯示檔案的資訊，並可對檔案執行更新或刪除的工作----->
-
 
 
 

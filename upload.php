@@ -30,7 +30,7 @@
  <!-- file 的話一定要有 enctype -->
 <form action="manage.php" method="post" enctype="multipart/form-data">
     <input type="file" name="img" id="file">
-    <input type="text" name="name" id="name">
+    <input type="text" name="name" id="name" required>
     <input type="submit" value="上傳">
 
 </form>
