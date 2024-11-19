@@ -30,6 +30,18 @@
             width: 120px;
         }
 
+        a{
+            display:inline-block;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            margin: 5px;
+            border-radius:8px;
+        }
+        
+        a:hover{
+            background-color:skyblue;
+        }
+        
         .addMore{
             margin:auto;
             background-color:pink;
@@ -67,6 +79,7 @@ if(isset($_FILES['filename'])){
 ?>
 
 <!----透過檔案讀取來顯示檔案的資訊，並可對檔案執行更新或刪除的工作----->
+<!-- first attempt -->
 <?php
 // open the folder first - menu path
 $dirpath = "./files";
@@ -94,13 +107,6 @@ $items = array_diff($items, array('.','..'));
 }
 */
 
-
-
-?>
-
-<!----透過資料表來顯示檔案的資訊，並可對檔案執行更新或刪除的工作----->
-<?php
-
 $rows = all('imgs');
 echo "<table>";
 foreach ($rows as $file) {
@@ -109,11 +115,20 @@ foreach ($rows as $file) {
     echo "<td> <img src='files/{$file['filename']}'> </td>";
     echo "<td>  {$file['descr']} </td>";
     echo "<td> <a href='del_img.php?id={$file['id']}'>刪除</a> </td>";
+    echo "<td> <a href='show_img.php?id={$file['id']}'>";
+    // 如果當前圖片是顯示(1)的話就寫隱藏
+    echo ($file['sh']==1)?"隱藏":"顯示";
+    echo"</a> </td>";
     echo "<td> <a href='re_upload.php?id={$file['id']}'>重新上傳</a> </td>";
     echo "</tr>";
 }
 echo "</table>";
+
 ?>
+
+<!----透過資料表來顯示檔案的資訊，並可對檔案執行更新或刪除的工作----->
+
+
 <div class="addMore">
     <a href="./upload.php">繼續新增</a>
 </div>

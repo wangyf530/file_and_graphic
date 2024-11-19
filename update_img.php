@@ -24,5 +24,5 @@ if(isset($_FILES['filename'])){
     }
 }
 
-// header("location:manage.php");
+header("location:manage.php");
 ?>
