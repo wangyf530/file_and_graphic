@@ -30,7 +30,7 @@
             width: 120px;
         }
 
-        a{
+        table a{
             display:inline-block;
             padding: 5px 10px;
             border: 1px solid #ccc;

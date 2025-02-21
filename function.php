@@ -73,7 +73,7 @@ function dd($array){
      * 新增或更新資料
      */
     function save($table,$array){
-        if(isset($array[id])){
+        if(isset($array['id'])){
             // update
             update($table, $array);
         } else {
