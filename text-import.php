@@ -118,7 +118,8 @@ function getfile($path)
 
     } catch(PDOException $e) {
         echo "Error creating table: " . $e->getMessage();
-    }
+        echo " <br> at data row $count";
+        echo "<br> $sql";    }
 }
 
 ?>
